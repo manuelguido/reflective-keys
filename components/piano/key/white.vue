@@ -1,24 +1,26 @@
 <template>
-  <div class="key white"></div>
+  <div class="key-white"></div>
 </template>
 
 <style scoped>
-.key {
-  border: 0.15rem solid #333;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-.key.white {
-  background: #ffffff;
-  height: 100%;
-  width: 14.28%;
-}
-
-.key.white:hover {
-  background: #eeeeee;
+.key-white {
+  width: 4.25rem;
+  z-index: 1;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-radius: 0 0 5px 5px;
+  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset,
+    0 0 3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+  margin: 0 0 0 -1em;
 }
 
-.key.white:active {
-  background: #cccccc;
+.key-white:active {
+  border-top: 1px solid #777;
+  border-left: 1px solid #999;
+  border-bottom: 1px solid #999;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset,
+    -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
 }
 </style>

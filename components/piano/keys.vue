@@ -1,18 +1,34 @@
 <template>
   <div class="keys">
-    <PianoKeyWhite
-      v-for="k in whiteKeys"
-      :key="k.id"
-      @click.native="playNote(`${k.id}${octaves[3]}`)"
+    <PianoKey
+      v-for="k in keys"
+      :key="`${k.id}${1}`"
+      :piano-key="k"
+      :octave="octaves[2]"
+      @playNote="playNote"
     />
-    <PianoKeyWhite
-      v-for="k in whiteKeys"
-      :key="k.id"
-      @click.native="playNote(`${k.id}${octaves[4]}`)"
+    <PianoKey
+      v-for="k in keys"
+      :key="`${k.id}${2}`"
+      :piano-key="k"
+      :octave="octaves[3]"
+      @playNote="playNote"
     />
-    <PianoKeyWhite
-      @click.native="playNote(`${whiteKeys[0].id}${octaves[5]}`)"
+    <PianoKey
+      v-for="k in keys"
+      :key="`${k.id}${3}`"
+      :piano-key="k"
+      :octave="octaves[4]"
+      @playNote="playNote"
     />
+    <PianoKey
+      v-for="k in keys"
+      :key="`${k.id}${4}`"
+      :piano-key="k"
+      :octave="octaves[5]"
+      @playNote="playNote"
+    />
+    <PianoKey :piano-key="keys[0]" :octave="octaves[6]" @playNote="playNote" />
   </div>
 </template>
 
@@ -20,38 +36,61 @@
 export default {
   name: "PianoKeys",
   methods: {
-    playNote(note = "C5", duration = "8n") {
-      const play = {
-        note: note,
-        duration: duration,
-      };
-      this.$emit("playNote", play);
+    playNote(pianoKey) {
+      this.$emit("playNote", pianoKey);
     },
   },
   data() {
     return {
-      octaves: [0, 1, 2, 3, 4, 5],
-      whiteKeys: [
+      octaves: [0, 1, 2, 3, 4, 5, 6, 7],
+      keys: [
         {
-          id: "C",
+          id: 1,
+          note: "C",
         },
         {
-          id: "D",
+          id: 2,
+          note: "C#",
         },
         {
-          id: "E",
+          id: 3,
+          note: "D",
         },
         {
-          id: "F",
+          id: 4,
+          note: "D#",
         },
         {
-          id: "G",
+          id: 5,
+          note: "E",
         },
         {
-          id: "A",
+          id: 6,
+          note: "F",
         },
         {
-          id: "B",
+          id: 7,
+          note: "F#",
+        },
+        {
+          id: 8,
+          note: "G",
+        },
+        {
+          id: 9,
+          note: "G#",
+        },
+        {
+          id: 10,
+          note: "A",
+        },
+        {
+          id: 11,
+          note: "A#",
+        },
+        {
+          id: 12,
+          note: "B",
         },
       ],
     };
@@ -62,7 +101,6 @@ export default {
 <style scoped>
 .keys {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
 }

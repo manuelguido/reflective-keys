@@ -21,7 +21,6 @@ export default {
 <style scoped>
 .piano {
   height: 25vh;
-  padding: 0.15rem;
-  width: 45vw;
+  position: relative;
 }
 </style>
