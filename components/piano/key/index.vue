@@ -1,11 +1,13 @@
 <template>
   <PianoKeyWhite
     v-if="isWhite"
+    :pressing="pressing"
     @mousedown.native="playNote"
     @mouseup.native="stopNote"
   />
   <PianoKeyBlack
     v-else
+    :pressing="pressing"
     @mousedown.native="playNote"
     @mouseup.native="stopNote"
   />

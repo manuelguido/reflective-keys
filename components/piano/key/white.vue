@@ -1,6 +1,22 @@
 <template>
-  <div class="key-white"></div>
+  <div :class="classList"></div>
 </template>
+
+<script>
+export default {
+  props: {
+    pressing: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classList() {
+      return ["key-white", this.pressing ? "pressing" : ""];
+    },
+  },
+};
+</script>
 
 <style scoped>
 .key-white {
@@ -15,7 +31,8 @@
   margin: 0 0 0 -1em;
 }
 
-.key-white:active {
+.key-white:active,
+.key-white.pressing {
   border-top: 1px solid #777;
   border-left: 1px solid #999;
   border-bottom: 1px solid #999;

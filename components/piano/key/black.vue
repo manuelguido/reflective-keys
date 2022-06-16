@@ -1,6 +1,22 @@
 <template>
-  <div class="key-black"></div>
+  <div :class="classList"></div>
 </template>
+
+<script>
+export default {
+  props: {
+    pressing: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classList() {
+      return ["key-black", this.pressing ? "pressing" : ""];
+    },
+  },
+};
+</script>
 
 <style scoped>
 .key-black {
@@ -15,7 +31,8 @@
   z-index: 2;
 }
 
-.key-black:active {
+.key-black:active,
+.key-black.pressing {
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
     0 -2px 2px 3px rgba(10, 10, 10, 0.6) inset, 0 1px 2px rgba(10, 10, 10, 0.5);
   background: linear-gradient(to right, #555 0%, #333 100%);
