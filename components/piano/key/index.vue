@@ -1,6 +1,14 @@
 <template>
-  <PianoKeyWhite v-if="isWhite" @click.native="playNote" ref="pianoKey" />
-  <PianoKeyBlack v-else @click.native="playNote" ref="pianoKey" />
+  <PianoKeyWhite
+    v-if="isWhite"
+    @mousedown.native="playNote"
+    @mouseup.native="stopNote"
+  />
+  <PianoKeyBlack
+    v-else
+    @mousedown.native="playNote"
+    @mouseup.native="stopNote"
+  />
 </template>
 
 <script>
@@ -30,6 +38,11 @@ export default {
       return `${this.pianoKey.note}${this.octave}`;
     },
   },
+  data() {
+    return {
+      pressing: false,
+    };
+  },
   mounted() {
     this.addEventListeners();
   },
@@ -39,12 +52,17 @@ export default {
   methods: {
     addEventListeners() {
       let self = this;
+      window.addEventListener("keydown", function (event) {
+        self.handleKeyDown(event);
+      });
+
       window.addEventListener("keyup", function (event) {
-        self.handleKeyPress(event);
+        self.handleKeyUp(event);
       });
     },
 
     removeEventListeners() {
+      window.removeEventListener("keydown", () => {});
       window.removeEventListener("keyup", () => {});
     },
 
@@ -60,18 +78,30 @@ export default {
       return this.pressedMyKey(position, key) && this.pressedMyOctave(octave);
     },
 
-    handleKeyPress(event) {
-      if (this.imPressed(0, 3, event.key) || this.imPressed(1, 4, event.key)) {
-        this.$refs.pianoKey.$el.click();
+    playCondition(event) {
+      return this.imPressed(0, 3, event.key) || this.imPressed(1, 4, event.key);
+    },
+
+    handleKeyDown(event) {
+      if (!this.pressing && this.playCondition(event)) {
+        this.playNote();
+      }
+    },
+
+    handleKeyUp(event) {
+      if (this.pressing && this.playCondition(event)) {
+        this.stopNote();
       }
     },
 
     playNote() {
-      const pianoKey = {
-        note: this.note,
-        duration: this.duration,
-      };
-      this.$emit("playNote", pianoKey);
+      this.pressing = true;
+      this.$emit("playNote", this.note);
+    },
+
+    stopNote() {
+      this.$emit("stopNote", this.note);
+      this.pressing = false;
     },
   },
 };

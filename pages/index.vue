@@ -27,7 +27,7 @@ export default {
 .homepage .filter {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding: 1rem;
   height: 100vh;

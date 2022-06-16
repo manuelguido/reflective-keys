@@ -1,6 +1,6 @@
 <template>
   <div class="piano">
-    <PianoKeys @playNote="playNote" />
+    <PianoKeys @playNote="playNote" @stopNote="stopNote" />
   </div>
 </template>
 
@@ -9,10 +9,18 @@ import * as Tone from "tone";
 
 export default {
   name: "Piano",
+  data() {
+    return {
+      synth: new Tone.PolySynth(Tone.Synth).toDestination(),
+    };
+  },
   methods: {
-    playNote(play) {
-      const synth = new Tone.Synth().toDestination();
-      synth.triggerAttackRelease(play.note, play.duration);
+    playNote(note) {
+      this.synth.triggerAttackRelease(note, Tone.now());
+    },
+    stopNote(note) {
+      const now = Tone.now();
+      this.synth.triggerRelease([note], now);
     },
   },
 };

@@ -7,6 +7,7 @@
         :piano-key="k"
         :octave="octave"
         @playNote="playNote"
+        @stopNote="stopNote"
       />
     </span>
     <PianoKey :piano-key="keys[0]" :octave="6" @playNote="playNote" />
@@ -17,8 +18,11 @@
 export default {
   name: "PianoKeys",
   methods: {
-    playNote(pianoKey) {
-      this.$emit("playNote", pianoKey);
+    playNote(note) {
+      this.$emit("playNote", note);
+    },
+    stopNote(note) {
+      this.$emit("stopNote", note);
     },
   },
   data() {
