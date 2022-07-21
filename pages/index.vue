@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      title: 'Reflex',
+      title: 'Reflective Keys',
     };
   },
 };
