@@ -9,6 +9,16 @@
 <script>
 export default {
   name: "IndexPage",
+  head() {
+    return {
+      title: this.title,
+    };
+  },
+  data() {
+    return {
+      title: 'Reflex',
+    };
+  },
 };
 </script>
 

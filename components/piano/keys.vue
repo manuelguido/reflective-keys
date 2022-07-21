@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      octaves: [2, 3, 4, 5],
+      octaves: [3, 4, 5],
       keys: [
         {
           id: 1,
