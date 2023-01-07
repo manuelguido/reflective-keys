@@ -2,24 +2,17 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
-  },
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-    requireConfigFile: false
+    node: true,
   },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:nuxt/recommended',
+    'prettier',
   ],
-  plugins: [
-  ],
+  plugins: [],
   // add your custom rules here
   rules: {
-    rules: {
-      'vue/multi-word-component-names': ['error', {
-        'ignores': ['default']
-      }]
-    }
-  }
+    'vue/multi-word-component-names': 'off',
+    'vue/valid-model-definition': 'off',
+  },
 }
