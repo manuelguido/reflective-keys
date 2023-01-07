@@ -16,9 +16,11 @@
 
 <script>
 import Vue from 'vue'
+import deviceDetectorMixin from '@/mixins/deviceDetectorMixin'
 
 export default Vue.extend({
   name: 'PianoKeys',
+  mixins: [deviceDetectorMixin],
   data() {
     return {
       octaves: [3, 4, 5],
@@ -87,9 +89,12 @@ export default Vue.extend({
     }
   },
   computed: {
+    computedOctaves() {
+      return this.isMobile() ? [3] : [3, 4, 5]
+    },
     fullPianoKeys() {
       const fullPianoKeys = []
-      this.octaves.forEach((octave) => {
+      this.computedOctaves.forEach((octave) => {
         this.keys.forEach((pianoKey) => {
           pianoKey.octave = octave
           fullPianoKeys.push(pianoKey)
