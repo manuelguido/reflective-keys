@@ -11,24 +11,24 @@ export default {
       effects: [
         {
           id: 1,
-          title: "Delay",
+          title: 'Delay',
           parameters: [
             {
               id: 1,
-              title: "Length",
-              value: 0.125,
+              title: 'Length',
+              value: 0.125
             },
             {
               id: 2,
-              title: "Duration",
-              value: 0.5,
-            },
-          ],
-        },
-      ],
-    };
-  },
-};
+              title: 'Duration',
+              value: 0.5
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -36,4 +36,3 @@ export default {
   margin-bottom: 4rem;
 }
 </style>
-

@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
     <div class="filter">
+      <TextTitle />
       <Piano />
     </div>
   </div>
@@ -8,23 +9,23 @@
 
 <script>
 export default {
-  name: "IndexPage",
-  head() {
-    return {
-      title: this.title,
-    };
-  },
+  name: 'IndexPage',
   data() {
     return {
-      title: 'Reflective Keys',
-    };
+      title: 'Reflective Keys'
+    }
   },
-};
+  head() {
+    return {
+      title: this.title
+    }
+  }
+}
 </script>
 
 <style scoped>
 .homepage {
-  background-image: url("~/assets/img/wallpaper.jpg");
+  background-image: url('~/assets/img/wallpaper.jpg');
   background-repeat: no-repeat;
   background-position: 0;
   background-size: cover;
@@ -42,6 +43,6 @@ export default {
   padding: 1rem;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(23, 23, 23, 0.45);
 }
 </style>
