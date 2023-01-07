@@ -76,4 +76,10 @@ export default Vue.extend({
   height: 25vh;
   position: relative;
 }
+
+@media screen and (max-width: 992px) {
+  .piano {
+    width: 80vw;
+  }
+}
 </style>

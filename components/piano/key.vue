@@ -1,20 +1,13 @@
 <template>
-  <div :class="classList" @mousedown="playNote" @mouseup="stopNote"></div>
+  <div :class="classList" @mousedown="playNote" @mouseup="stopNote" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'PianoKey',
   props: {
-    keyboardKey: {
-      type: String,
-      default: ''
-    },
-    octave: {
-      type: Number,
-      default: 4
-    },
     pianoKey: {
       type: Object,
       default: () => {}
@@ -29,15 +22,19 @@ export default Vue.extend({
     isWhite() {
       return this.pianoKey ? this.pianoKey.note.length === 1 : false
     },
+
     note() {
-      return `${this.pianoKey.note}${this.octave}`
+      return `${this.pianoKey.note}${this.pianoKey.octave}`
     },
+
     keyColorClass() {
       return this.isWhite ? 'key-white' : 'key-black'
     },
+
     pressingClass() {
       return this.pressing ? 'pressing' : ''
     },
+
     classList() {
       return [this.keyColorClass, this.pressingClass]
     }
@@ -65,20 +62,12 @@ export default Vue.extend({
       window.removeEventListener('keyup', () => {})
     },
 
-    pressedMyKey(position, key) {
-      return this.pianoKey.keys[position] === key
-    },
-
-    pressedMyOctave(octave) {
-      return this.octave === octave
-    },
-
-    imPressed(position, octave, key) {
-      return this.pressedMyKey(position, key) && this.pressedMyOctave(octave)
+    imPressed(key) {
+      return this.pianoKey.key === key
     },
 
     playCondition(event) {
-      return this.imPressed(0, 3, event.key) || this.imPressed(1, 4, event.key)
+      return this.imPressed(event.key)
     },
 
     handleKeyDown(event) {
@@ -139,10 +128,9 @@ $black-dark: #222;
 }
 
 .key-white:last-child {
-  margin: 0 !important;
+  width: 3.25rem;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
-  margin: 0 0 0 -2em;
   border-right: 1px solid $grey-medium;
 }
 
