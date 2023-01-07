@@ -154,7 +154,7 @@ const pianokeysMixin = {
         {
           note: 'C',
           key: 'i',
-          keyCode: 77,
+          keyCode: 73,
           octave: 5,
         }
       ]
