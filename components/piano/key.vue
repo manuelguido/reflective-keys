@@ -96,16 +96,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-$white: #fff;
-
-$grey-light: #f9fafc;
-$grey-medium-light: #bbb;
-$grey-medium: #999;
-$grey-dark: #777;
-
-$black-light: #555;
-$black-medium: #333;
-$black-dark: #222;
+@import '@/assets/scss/_variables.scss';
 
 .key-white {
   border-left: 1px solid $grey-medium;

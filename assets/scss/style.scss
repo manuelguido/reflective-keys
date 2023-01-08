@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap');
+@import './variables';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -6,7 +7,7 @@
 }
 
 html {
-  line-height: 1.15;
+  line-height: 1;
   text-size-adjust: 100%;
 }
 
@@ -19,5 +20,5 @@ html, body {
 }
 
 .text-white {
-  color: #fff;
+  color: $white;
 }

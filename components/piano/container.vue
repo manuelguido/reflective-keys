@@ -11,13 +11,13 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/scss/_background.scss';
+
 .container {
-  backdrop-filter: blur(12.1px);
-  background: rgba(255, 255, 255, 0.1);
+  @include backdropFilterLight;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  box-shadow: 0 20px 100px 20px rgba(45, 255, 178, 0.1);
-  -webkit-backdrop-filter: blur(12.1px);
 }
 
 @media screen and (min-width: 992px) {
