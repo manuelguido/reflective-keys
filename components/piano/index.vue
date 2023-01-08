@@ -1,10 +1,15 @@
 <template>
   <PianoContainer>
-    <PianoInnerContainer>
+    <PianoContainerInner>
       <div class="piano">
-        <PianoKeys @playNote="playNote" @stopNote="stopNote" />
+        <PianoKeys
+          :display-text="displayText"
+          @playNote="playNote"
+          @stopNote="stopNote"
+        />
       </div>
-    </PianoInnerContainer>
+    </PianoContainerInner>
+    <PianoData @checked="setDisplayText" />
   </PianoContainer>
 </template>
 
@@ -34,12 +39,13 @@ export default Vue.extend({
         level1: 0.1,
         level2: 0.001,
         effect: null
-      }
+      },
+      displayText: 'note'
     }
   },
-  // mounted() {
-  //   this.setupEffects();
-  // },
+  mounted() {
+    // this.setupEffects();
+  },
   methods: {
     playNote(note) {
       this.synth.triggerAttackRelease(note, Tone.now())
@@ -51,22 +57,26 @@ export default Vue.extend({
 
     connectEffect(effect) {
       this.synth.connect(effect)
-    }
+    },
 
-    // setupEffects() {
-    //   this.connectEffect(this.lowpassFilter.effect);
-    //   this.connectEffect(this.highpassFilter.effect);
-    //   this.feedbackDelay.effect = new Tone.FeedbackDelay(
-    //     this.feedbackDelay.level1,
-    //     this.feedbackDelay.level2
-    //   ).toDestination()
-    //   this.connectEffect(this.feedbackDelay.effect)
-    //   const $this = this
-    //   setTimeout(() => {
-    //     $this.feedbackDelay.level1 = 0
-    //     $this.feedbackDelay.level2 = 0
-    //   }, 3000)
-    // }
+    setupEffects() {
+      this.connectEffect(this.lowpassFilter.effect)
+      this.connectEffect(this.highpassFilter.effect)
+      this.feedbackDelay.effect = new Tone.FeedbackDelay(
+        this.feedbackDelay.level1,
+        this.feedbackDelay.level2
+      ).toDestination()
+      this.connectEffect(this.feedbackDelay.effect)
+      const $this = this
+      setTimeout(() => {
+        $this.feedbackDelay.level1 = 100
+        $this.feedbackDelay.level2 = 100
+      }, 3000)
+    },
+
+    setDisplayText(newValue) {
+      this.displayText = newValue
+    }
   }
 })
 </script>

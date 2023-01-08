@@ -1,5 +1,7 @@
 <template>
-  <div :class="classList" @mousedown="playNote" @mouseup="stopNote" />
+  <div :class="classList" @mousedown="playNote" @mouseup="stopNote">
+    <PianoKeyNoteText :text="keyNoteText" :is-white="isWhite" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -11,6 +13,10 @@ export default Vue.extend({
     pianoKey: {
       type: Object,
       default: () => {}
+    },
+    displayText: {
+      type: String,
+      default: null
     }
   },
   data() {
@@ -37,6 +43,12 @@ export default Vue.extend({
 
     classList() {
       return [this.keyColorClass, this.pressingClass]
+    },
+
+    keyNoteText() {
+      return this.displayText === 'keys'
+        ? this.pianoKey.key
+        : this.pianoKey.note
     }
   },
   mounted() {
@@ -97,6 +109,22 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 @import '@/assets/scss/_variables.scss';
+.key-white,
+.key-black {
+  display: flex;
+  justify-content: start;
+  align-items: flex-end;
+}
+
+.key-white {
+  padding-bottom: 0.6rem;
+  padding-left: 0.6rem;
+}
+
+.key-black {
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem;
+}
 
 .key-white {
   border-left: 1px solid $grey-medium;

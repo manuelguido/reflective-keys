@@ -22,7 +22,7 @@ export default Vue.extend({
 
 @media screen and (min-width: 992px) {
   .container {
-    padding: 5rem;
+    padding: 4rem;
   }
 }
 

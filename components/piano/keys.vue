@@ -4,6 +4,7 @@
       v-for="(k, i) in pianoKeys"
       :key="i"
       :piano-key="k"
+      :display-text="displayText"
       @playNote="playNote"
       @stopNote="stopNote"
     />
@@ -17,6 +18,12 @@ import pianoKeysMixin from '@/mixins/pianokeysMixin'
 export default Vue.extend({
   name: 'PianoKeys',
   mixins: [pianoKeysMixin],
+  props: {
+    displayText: {
+      type: String,
+      default: ''
+    }
+  },
   methods: {
     playNote(note) {
       this.$emit('playNote', note)
