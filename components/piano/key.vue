@@ -110,10 +110,8 @@ $black-dark: #222;
 .key-white {
   border-left: 1px solid $grey-medium;
   border-bottom: 1px solid $grey-medium;
-  // border-radius: 0 0 5px 5px;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset,
     0 0 3px rgba(0, 0, 0, 0.2);
-  // background: linear-gradient(to bottom, $grey-light 0%, $white 100%);
   background: #fff;
 
   margin: 0 0 0 -1em;
@@ -150,7 +148,7 @@ $black-dark: #222;
   border-radius: 0 0 4px 4px;
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
     0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(10, 10, 10, 0.75);
-  height: 8rem;
+  height: 10rem;
   margin: 0 0 0 -2rem;
   width: 2rem;
   z-index: 2;
