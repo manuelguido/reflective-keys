@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title">{{ text }}</h1>
+  <h1 class="title text-white">{{ text }}</h1>
 </template>
 
 <script lang="ts">
@@ -17,9 +17,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .title {
-  font-size: 70pt;
-  color: #fff;
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
 }
 
 @media (max-width: 332px) {
@@ -42,19 +40,19 @@ export default Vue.extend({
 
 @media (min-width: 768px) and (max-width: 992px) {
   .title {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .title {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 
 @media (min-width: 1200px) {
   .title {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 }
 </style>
