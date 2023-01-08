@@ -17,3 +17,7 @@ html, body {
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
+.text-white {
+  color: #fff;
+}
