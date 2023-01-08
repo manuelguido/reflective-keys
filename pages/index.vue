@@ -3,6 +3,7 @@
     <div class="filter">
       <TextTitle />
       <Piano />
+      <Footer />
     </div>
   </div>
 </template>
@@ -38,9 +39,9 @@ export default {
 .homepage .filter {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1rem;
+  padding-top: 14vh;
   height: 100vh;
   width: 100vw;
   background-color: rgba(23, 23, 23, 0.45);
