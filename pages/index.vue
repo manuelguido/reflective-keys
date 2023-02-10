@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <div class="filter">
-      <TextTitle />
+      <Logo />
       <Piano />
       <Footer />
     </div>
@@ -37,13 +37,24 @@ export default {
 }
 
 .homepage .filter {
+  align-items: center;
+  background-color: rgba(23, 23, 23, 0.45);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  padding-top: 14vh;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(23, 23, 23, 0.45);
+}
+
+@media screen and (min-width: 992px) {
+  .homepage .filter {
+    padding-top: 4vh;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .homepage .filter {
+    padding-top: 10vh;
+  }
 }
 </style>
